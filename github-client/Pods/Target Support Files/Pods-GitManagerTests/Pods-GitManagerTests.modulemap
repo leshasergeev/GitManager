@@ -1,6 +1,0 @@
-framework module Pods_GitManagerTests {
-  umbrella header "Pods-GitManagerTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
