@@ -1,0 +1,23 @@
+PODS:
+  - RemoteImage (0.1.0)
+  - SwiftLint (0.43.1)
+
+DEPENDENCIES:
+  - RemoteImage (from `../RemoteImage`)
+  - SwiftLint
+
+SPEC REPOS:
+  trunk:
+    - SwiftLint
+
+EXTERNAL SOURCES:
+  RemoteImage:
+    :path: "../RemoteImage"
+
+SPEC CHECKSUMS:
+  RemoteImage: efede0fc2b4ac623ee5edd39f4639079ddb7d4b3
+  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
+
+PODFILE CHECKSUM: cd971e51449fda3a10c086f0be6cda42253685d3
+
+COCOAPODS: 1.10.2

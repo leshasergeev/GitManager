@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '13.0'
+
+target 'RemoteImage_Example' do
+  pod 'RemoteImage', :path => '../'
+
+  target 'RemoteImageTests' do
+    inherit! :search_paths
+
+
+  end
+end

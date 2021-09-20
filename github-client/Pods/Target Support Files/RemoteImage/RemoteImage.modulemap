@@ -1,0 +1,6 @@
+framework module RemoteImage {
+  umbrella header "RemoteImage-umbrella.h"
+
+  export *
+  module * { export * }
+}

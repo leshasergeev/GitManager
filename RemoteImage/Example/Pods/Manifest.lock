@@ -1,0 +1,16 @@
+PODS:
+  - RemoteImage (0.1.0)
+
+DEPENDENCIES:
+  - RemoteImage (from `../`)
+
+EXTERNAL SOURCES:
+  RemoteImage:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  RemoteImage: 1566ce7aed7597716db210afef6df439dffd7f7a
+
+PODFILE CHECKSUM: e2491ae6f74b42ba7ad1917d734efd80c7b83ffc
+
+COCOAPODS: 1.10.1

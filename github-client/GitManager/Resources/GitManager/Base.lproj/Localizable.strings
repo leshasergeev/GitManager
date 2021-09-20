@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  GitManager
+
+  Created by Aleksei Sergeev on 17.08.2021.
+  
+*/
+
+"Something went wrong" = "Something went wrong";
+"Type request to search" = "Type request to search";
+"Nothing found for you request, try another one." = "Nothing found for you request, try another one.";
+"Sign In with GitHub" = "Sign In with GitHub";
+"Welcome to Git Manager!" = "Welcome to Git Manager!";
+"Some Error with Receiving User's Profile Occurred" = "Some Error with Receiving User's Profile Occurred";
+"Ok" = "Ok";
+"Working at" = "Working at";
+"Sign Out" = "Sign Out";
+"Working somewhere" = "Working somewhere";
+"Name Is Unknown" = "Name Is Unknown";
+"Email Is Unknown" = "Email Is Unknown";
+"Location Is Unknown" = "Location Is Unknown";
