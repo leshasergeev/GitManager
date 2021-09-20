@@ -26,3 +26,8 @@ _MVP_ + _Coordinator_
 8. Полная локализация (Русский/English)
 
 ## UI
+![1. Welcome](https://github.com/iBamboola/GitManager/blob/master/Images/authView.png)
+![2. Authorization](https://github.com/iBamboola/GitManager/blob/master/Images/webView.png)
+![3. New Search](https://github.com/iBamboola/GitManager/blob/master/Images/placeholder.png)
+![4. Searched Data](https://github.com/iBamboola/GitManager/blob/master/Images/searching.png)
+![5. User Profile](https://github.com/iBamboola/GitManager/blob/master/Images/profile.png)
