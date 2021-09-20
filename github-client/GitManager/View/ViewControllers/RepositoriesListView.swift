@@ -34,6 +34,7 @@ class RepositoriesListViewController: UIViewController, RepositoriesListView {
         table.keyboardDismissMode = .onDrag
         table.rowHeight = UITableView.automaticDimension
         table.estimatedRowHeight = 50
+        table.accessibilityLabel = "table_ListOfReps"
         return table
     }()
 
@@ -42,6 +43,7 @@ class RepositoriesListViewController: UIViewController, RepositoriesListView {
         search.backgroundColor = .clear
         search.searchBarStyle = .minimal
         search.placeholder = emptyRequestStr
+        search.accessibilityLabel = "searchBar_repos"
         return search
     }()
 
@@ -201,6 +203,7 @@ class RepositoriesListViewController: UIViewController, RepositoriesListView {
     private func setupTabBarItem() {
         tabBarItem.title = "Respositories"
         tabBarItem.image = UIImage(named: "list_of_repositories_bar_logo")?.withRenderingMode(.alwaysOriginal)
+        tabBarItem.accessibilityLabel = "tabBarItem_repositories"
     }
 
     deinit {
@@ -218,6 +221,7 @@ extension RepositoriesListViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeue(RepositoriesTableViewCell.self, indexPath: indexPath)
         else { return UITableViewCell() }
+        cell.accessibilityLabel = "cell_\(indexPath.row)"
         if let repository = presenter.retrieveRepository(atIndex: indexPath.row) {
             cell.setupCell(withRepository: repository)
         }

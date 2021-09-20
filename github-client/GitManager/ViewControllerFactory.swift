@@ -62,6 +62,7 @@ class ViewControllerFactoryImpl: ViewControllerFactory {
 
     func buildMainViewController(withCoordinator coordinator: MainCoordinator, animated: Bool = false) -> UIViewController {
         let tabBarVC = UITabBarController()
+        tabBarVC.accessibilityLabel = "tabBar_main"
         tabBarVC.setViewControllers([
             buildRepositoriesListViewController(withCoordinator: coordinator),
             buildCurrentUserProfileViewController(wiCoordinator: coordinator)

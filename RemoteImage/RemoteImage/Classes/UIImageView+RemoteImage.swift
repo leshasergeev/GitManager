@@ -17,32 +17,32 @@ public typealias LoadingIndicatorView = UIView & LoadingIndicator
 private var imageViewStoredTaskKey: Void?
 
 public extension UIImageView {
-    
+
     func setImage(with url: URL?,
                   placeholder: UIImage? = nil,
                   loadingIndicator: LoadingIndicatorView? = nil,
                   imageProcessor: ImageProcessor? = nil,
-                  completion: (() -> ())? = nil) {
+                  completion: (() -> Void)? = nil) {
         guard let url = url else {
             if let placeholder = placeholder { self.image = placeholder }
             return
         }
-        
+
         subviews
             .compactMap { $0 as? LoadingIndicatorView }
             .filter { $0 !== loadingIndicator }
             .forEach { $0.removeFromSuperview() }
-        
+
         if let loadingIndicator = loadingIndicator,
            loadingIndicator.superview != self {
             addSubview(loadingIndicator)
             setConstraintsForLoadingIndicator(loadingIndicator)
         }
-        
+
         storedTask?.cancel()
-        
+
         let urlForCache = createURLForCache(withURL: url, andImageProcessor: imageProcessor)
-        
+
         if let image = RemoteImageTools.shared.imageCache.obtainImage(forURL: urlForCache) {
             self.image = image
         } else {
@@ -73,7 +73,7 @@ public extension UIImageView {
             loadingIndicator?.startLoading()
         }
     }
-    
+
     private func setConstraintsForLoadingIndicator(_ loadingIndicator: LoadingIndicatorView) {
         loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -83,13 +83,13 @@ public extension UIImageView {
             loadingIndicator.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
     }
-    
+
     private func createURLForCache(withURL url: URL, andImageProcessor imageProcessor: ImageProcessor?) -> URL {
         var urlForCache = url
         if let imgProcIdentifier = imageProcessor?.identifier {
             urlForCache.appendPathComponent(imgProcIdentifier)
         }
-        
+
         return urlForCache
     }
 }

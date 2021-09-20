@@ -21,11 +21,11 @@ final class TestingLoadingIndicator: UIView {
 
     var statusLog: [IndicatorStates] = []
     var appearingStates: [IndicatorAppearingStates] = []
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -37,7 +37,7 @@ extension TestingLoadingIndicator: LoadingIndicator {
     func startLoading() {
         statusLog.append(.start)
     }
-    
+
     func stopLoading() {
         statusLog.append(.stop)
     }

@@ -10,7 +10,7 @@ import UIKit
 import RemoteImage
 
 class ViewController: UIViewController {
-    
+
     private var buttonWithURL: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("correct", for: .normal)
@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         button.layer.cornerRadius = 10
         return button
     }()
-    
+
     private var buttonWithUncorrectURL: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("uncorrect", for: .normal)
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         button.layer.cornerRadius = 10
         return button
     }()
-    
+
     private var buttonWithNil: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("nil", for: .normal)
@@ -34,32 +34,32 @@ class ViewController: UIViewController {
         button.layer.cornerRadius = 10
         return button
     }()
-    
+
     private let imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.layer.borderWidth = 2
         imageView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         return imageView
     }()
-    
+
     private var imageProcessor: RoundCornerImageProcessor? {
         RoundCornerImageProcessor(targetSize: imageView.frame.size, cornerRadius: 20)
     }
-    
+
     private let httpAdressForImageAsString = "https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg"
-    
+
     private let placeholderImage = UIImage(systemName: "photo.fill.on.rectangle.fill")
-    
+
     private let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .medium)
 
     // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        
+
         view.addSubview(imageView)
         setConstraintsForImageView()
-        
+
         let imageUrl = URL(string: httpAdressForImageAsString)!
         DispatchQueue.main.async {
             self.imageView.setImage(with: imageUrl,
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         view.addSubview(stack)
         setConstraintsFor(stack: stack)
     }
-    
+
     private func setConstraintsForImageView() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -82,24 +82,24 @@ class ViewController: UIViewController {
             imageView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -17)
         ])
     }
-    
+
     private func createStackViewWithButtons() -> UIStackView {
         let stack = UIStackView(frame: .zero)
         stack.alignment     = .fill
         stack.axis          = .horizontal
         stack.distribution  = .equalSpacing
-        
+
         stack.backgroundColor = .clear
-        
+
         addActionsToButtons()
-        
+
         stack.addArrangedSubview(buttonWithURL)
         stack.addArrangedSubview(buttonWithUncorrectURL)
         stack.addArrangedSubview(buttonWithNil)
-        
+
         return stack
     }
-    
+
     private func setConstraintsFor(stack: UIStackView) {
         stack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -109,13 +109,13 @@ class ViewController: UIViewController {
             stack.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -100)
         ])
     }
-    
+
     private func addActionsToButtons() {
         buttonWithURL.addTarget(self, action: #selector(correctURLPressed), for: .touchUpInside)
         buttonWithUncorrectURL.addTarget(self, action: #selector(uncorrectURLPressed), for: .touchUpInside)
         buttonWithNil.addTarget(self, action: #selector(nilPressed), for: .touchUpInside)
     }
-    
+
     @objc private func correctURLPressed() {
         let imageUrl = URL(string: httpAdressForImageAsString)!
         DispatchQueue.main.async {
@@ -125,7 +125,7 @@ class ViewController: UIViewController {
                                     imageProcessor: self.imageProcessor)
         }
     }
-    
+
     @objc private func uncorrectURLPressed() {
         let imageUrl = URL(string: "h")!
         DispatchQueue.main.async {
@@ -135,7 +135,7 @@ class ViewController: UIViewController {
                                     imageProcessor: self.imageProcessor)
         }
     }
-    
+
     @objc private func nilPressed() {
         let imageUrl: URL? = nil
         DispatchQueue.main.async {
@@ -144,7 +144,7 @@ class ViewController: UIViewController {
                                     loadingIndicator: self.activityIndicator)
         }
     }
-    
+
 }
 
 extension UIActivityIndicatorView: LoadingIndicator {
@@ -152,11 +152,10 @@ extension UIActivityIndicatorView: LoadingIndicator {
         startAnimating()
         print("Starting download...")
     }
-    
+
     public func stopLoading() {
         stopAnimating()
         print("Stopping download...")
     }
-    
-    
+
 }

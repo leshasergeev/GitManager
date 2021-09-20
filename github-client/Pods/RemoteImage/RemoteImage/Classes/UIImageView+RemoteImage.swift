@@ -17,7 +17,7 @@ public typealias LoadingIndicatorView = UIView & LoadingIndicator
 private var imageViewStoredTaskKey: Void?
 
 public extension UIImageView {
-    
+
     func setImage(with url: URL?,
                   placeholder: UIImage? = nil,
                   loadingIndicator: LoadingIndicatorView? = nil,
@@ -26,22 +26,22 @@ public extension UIImageView {
             if let placeholder = placeholder { self.image = placeholder }
             return
         }
-        
+
         subviews
             .compactMap { $0 as? LoadingIndicatorView }
             .filter { $0 !== loadingIndicator }
             .forEach { $0.removeFromSuperview() }
-        
+
         if let loadingIndicator = loadingIndicator,
            loadingIndicator.superview != self {
             addSubview(loadingIndicator)
             setConstraintsForLoadingIndicator(loadingIndicator)
         }
-        
+
         storedTask?.cancel()
-        
+
         let urlForCache = createURLForCache(withURL: url, andImageProcessor: imageProcessor)
-        
+
         if let image = RemoteImageTools.shared.imageCache.obtainImage(forURL: urlForCache) {
             DispatchQueue.main.async {
                 self.image = image
@@ -77,7 +77,7 @@ public extension UIImageView {
             loadingIndicator?.startLoading()
         }
     }
-    
+
     private func setConstraintsForLoadingIndicator(_ loadingIndicator: LoadingIndicatorView) {
         loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -87,13 +87,13 @@ public extension UIImageView {
             loadingIndicator.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
     }
-    
+
     private func createURLForCache(withURL url: URL, andImageProcessor imageProcessor: ImageProcessor?) -> URL {
         var urlForCache = url
         if let imgProcIdentifier = imageProcessor?.identifier {
             urlForCache.appendPathComponent(imgProcIdentifier)
         }
-        
+
         return urlForCache
     }
 }
@@ -101,7 +101,7 @@ public extension UIImageView {
 extension UIImageView {
     public var storedTask: URLSessionDataTask? {
         get {
-            return objc_getAssociatedObject(self, &imageViewStoredTaskKey) as? URLSessionDataTask ?? nil
+            return objc_getAssociatedObject(self, &imageViewStoredTaskKey) as? URLSessionDataTask
         }
         set {
             if newValue == nil {

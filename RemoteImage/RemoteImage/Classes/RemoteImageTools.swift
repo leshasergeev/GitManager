@@ -8,12 +8,12 @@
 import Foundation
 
 class RemoteImageTools {
-    
+
     static let shared = RemoteImageTools()
-    
+
     private init() {}
-    
+
     var imageDownloader: RemoteImageDownloader = DefaultRemoteImageDownloader()
-    
+
     var imageCache: RemoteImageCache = DefaultRemoteImageCache()
 }

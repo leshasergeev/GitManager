@@ -16,7 +16,7 @@ final class LoadingIndicatorV: UIView {
         backgroundColor = .yellow
         layer.cornerRadius = bounds.height / 2
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -27,7 +27,7 @@ extension LoadingIndicatorV: LoadingIndicator {
     func startLoading() {
         print("Starting download...")
     }
-    
+
     func stopLoading() {
         print("Stopping download...")
     }

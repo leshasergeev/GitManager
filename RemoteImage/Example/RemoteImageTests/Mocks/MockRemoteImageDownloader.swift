@@ -10,16 +10,16 @@ import RemoteImage
 import XCTest
 
 class MockRemoteImageDownloader: RemoteImageDownloader {
-    
+
     var result: Result<DownloadedImageWithResponse, Error>?
-    
+
     var accomplishedCompletion: ((Result<DownloadedImageWithResponse, Error>) -> Void)?
-    
-    func downloadImage(at url: URL,completion: @escaping (Result<DownloadedImageWithResponse, Error>) -> Void) -> URLSessionDataTask {
+
+    func downloadImage(at url: URL, completion: @escaping (Result<DownloadedImageWithResponse, Error>) -> Void) -> URLSessionDataTask {
         accomplishedCompletion = completion
         return URLSessionDataTask()
     }
-    
+
     func finishDownload() {
         if let result = result {
             accomplishedCompletion?(result)

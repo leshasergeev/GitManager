@@ -13,9 +13,9 @@ public protocol RemoteImageCache {
 }
 
 class DefaultRemoteImageCache: RemoteImageCache {
-    
+
     private(set) var cache = URLCache()
-    
+
     func store(image: UIImage, forURL url: URL, response: URLResponse?) {
         let urlRequest = URLRequest(url: url)
         if let data = UIImagePNGRepresentation(image) {
@@ -27,7 +27,7 @@ class DefaultRemoteImageCache: RemoteImageCache {
             cache.storeCachedResponse(cachedURLResponse, for: urlRequest)
         }
     }
-    
+
     func obtainImage(forURL url: URL) -> UIImage? {
         let cachedUrlResponse = cache.cachedResponse(for: URLRequest(url: url))
         if let data = cachedUrlResponse?.data, let image = UIImage(data: data) {

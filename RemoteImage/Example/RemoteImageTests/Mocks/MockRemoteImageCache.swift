@@ -10,16 +10,15 @@ import RemoteImage
 import XCTest
 
 class MockRemoteImageCache: RemoteImageCache {
-    var image: UIImage? = nil
+    var image: UIImage?
     var storage = UIImage()
-    
+
     func store(image: UIImage, forURL url: URL, response: URLResponse?) {
         storage = image
     }
-    
+
     func obtainImage(forURL url: URL) -> UIImage? {
         return image
     }
-    
-    
+
 }

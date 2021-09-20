@@ -1,13 +1,16 @@
 PODS:
   - RemoteImage (0.1.0)
+  - SnapshotTesting (1.9.0)
   - SwiftLint (0.43.1)
 
 DEPENDENCIES:
   - RemoteImage (from `../RemoteImage`)
+  - SnapshotTesting (~> 1.9.0)
   - SwiftLint
 
 SPEC REPOS:
   trunk:
+    - SnapshotTesting
     - SwiftLint
 
 EXTERNAL SOURCES:
@@ -16,8 +19,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   RemoteImage: efede0fc2b4ac623ee5edd39f4639079ddb7d4b3
+  SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: cd971e51449fda3a10c086f0be6cda42253685d3
+PODFILE CHECKSUM: 71574915f8a2596b996ee7e2486e9fc1990f0a87
 
 COCOAPODS: 1.10.2
